@@ -94,6 +94,17 @@ const longestNum = (arg) => {
     return ansArray;
 }
 
+const ending = (arg) => {
+    let args = arg.split('"');
+    console.log(args[1] + ' ' + args[3]);
+    let diff = args[1].length - args[3].length;
+    if(args[1].substr(diff) === args[3]){
+        return true;
+    } else {
+        return false;
+    }
+}
+
 const setDisplay = (ev) => {
     if(el !== ev.target){
         el = ev.target;
@@ -123,7 +134,8 @@ let Functions = {
     reverseString,
     factorialize,
     longestWord,
-    longestNum
+    longestNum,
+    ending
 }
 
 button.addEventListener('click', submitInput);
