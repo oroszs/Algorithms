@@ -1,8 +1,13 @@
 const submitInput = (event) => {
     event.preventDefault();
     output.style.display = 'block';
-    output.innerHTML = Functions[currentFunc](input.value);
-    input.value = '';
+    if(currentFunc === ''){
+        output.innerHTML = input.value;
+        input.value='';
+    } else {
+        output.innerHTML = Functions[currentFunc](input.value);
+        input.value = '';
+    }
 }
 
 const tempConvert = (arg) => {
@@ -10,18 +15,32 @@ const tempConvert = (arg) => {
     return answer;
 };
 
-const anotherFunc = () => {
-    console.log('this is another function');
+const setDisplay = (ev) => {
+    if(el !== ev.target){
+        el = ev.target;
+        currentFunc = el.dataset.func;
+        title.innerHTML = el.innerHTML;
+        output.style.display = 'none';
+    }
+}
+
+const setDefaultDisplay = () => {
+    title.innerHTML = 'Select a Problem';
 }
 
 let button = document.getElementById('submitButton');
 let input = document.getElementById('inputBox');
 let output = document.getElementById('output');
-let currentProblem = document.getElementsByClassName('prob')[0];
-let currentFunc = currentProblem.dataset.func;
+let title = document.getElementById('title');
+let probHolder = document.getElementById('probList');
+let currentFunc = '';
+let el = '';
+
+setDefaultDisplay();
 
 let Functions = {
     tempConvert
 }
 
 button.addEventListener('click', submitInput);
+probHolder.addEventListener('click', setDisplay);
