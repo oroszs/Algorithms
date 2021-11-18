@@ -1,19 +1,26 @@
 const submitInput = (event) => {
+    ans = '';
     event.preventDefault();
-    output.style.display = 'block';
+    output.style.display = 'inline-block';
     if(currentFunc === ''){
         output.innerHTML = input.value;
-        input.value='';
     } else {
         output.innerHTML = Functions[currentFunc](input.value);
-        input.value = '';
     }
+    input.value='';
 }
 
 const tempConvert = (arg) => {
-    let answer = `${((arg * (9/5)) + 32)}&deg`;
-    return answer;
+    ans = `${((arg * (9/5)) + 32)}&deg`;
+    return ans;
 };
+
+const reverseString = (arg) => {
+    for(let x = arg.length -1; x > -1; x--){
+        ans += arg[x];
+    }
+    return ans;
+}
 
 const setDisplay = (ev) => {
     if(el !== ev.target){
@@ -35,11 +42,13 @@ let title = document.getElementById('title');
 let probHolder = document.getElementById('probList');
 let currentFunc = '';
 let el = '';
+let ans = '';
 
 setDefaultDisplay();
 
 let Functions = {
-    tempConvert
+    tempConvert,
+    reverseString
 }
 
 button.addEventListener('click', submitInput);

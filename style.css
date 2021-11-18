@@ -14,6 +14,9 @@ body {
     height: 500px;
     border-radius: 5px;
     background: rgb(192, 159, 116);
+    overflow-wrap: anywhere;
+    overflow: hidden;
+    padding: 20px;
 }
 #output{
     display: none;
