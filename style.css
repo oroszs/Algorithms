@@ -1,1 +1,24 @@
-body {}
+body {
+    background-color: burlywood;
+}
+#wrapper{
+    position: relative;
+    text-align: center;
+    font-size: 18pt;
+    color: rgb(54, 35, 0);
+}
+#outputDiv{
+    position: relative;
+    margin: auto;
+    width: 85%;
+    height: 500px;
+    background: white;
+}
+#output{
+    position: relative;
+    margin: auto;
+    background: grey;
+    width: 80%;
+    height: 80%;
+    top: 50px;
+}
