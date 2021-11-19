@@ -6,6 +6,7 @@ body {
     text-align: center;
     font-size: 18pt;
     color: rgb(54, 35, 0);
+    min-width: 920px;
 }
 #outputDiv{
     position: relative;
@@ -17,6 +18,7 @@ body {
     overflow-wrap: anywhere;
     overflow: hidden;
     padding: 20px;
+    min-width: 350px;
 }
 #output{
     display: none;
@@ -38,6 +40,8 @@ body {
     top: 0px;
     width: 25%;
     height: 80%;
+    text-align: left;
+    min-width: 250px;
 }
 .prob{
     padding: 10px;

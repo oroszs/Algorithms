@@ -105,6 +105,31 @@ const ending = (arg) => {
     }
 }
 
+const repeat = (arg) => {
+    let arg2 = arg.split(', ');
+    let arg1 = arg2[0].split('"');
+    if(arg2[1] > 0){
+        for(let x = 0; x < arg2[1]; x++){
+            ans += arg1[1];
+        }
+    }
+    return ans;
+}
+
+const truncate = (arg) => {
+    let arg1 = arg.split('"');
+    let arg2 = arg1[2].split(', ');
+    if(arg2[1] < arg1[1].length && (parseInt(arg2[1]) == arg2[1])){
+        for(let x = 0; x < arg2[1]; x++){
+            ans += arg1[1][x];
+        }
+        ans += '...';
+    } else {
+        ans = arg1[1];
+    }
+    return ans;
+}
+
 const setDisplay = (ev) => {
     if(el !== ev.target){
         el = ev.target;
@@ -135,7 +160,9 @@ let Functions = {
     factorialize,
     longestWord,
     longestNum,
-    ending
+    ending,
+    repeat,
+    truncate
 }
 
 button.addEventListener('click', submitInput);
