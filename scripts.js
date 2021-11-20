@@ -11,7 +11,7 @@ const submitInput = (event) => {
 }
 
 const tempConvert = (arg) => {
-    ans = `${((arg * (9/5)) + 32)}&deg`;
+    ans = `${((arg * (9/5)) + 32)}&degF`;
     return ans;
 };
 
@@ -130,6 +130,25 @@ const truncate = (arg) => {
     return ans;
 }
 
+const titleCase = (arg) => {
+    let str = noQuotes(arg);
+    let words = str.split(' ');
+    let word = '';
+    words.forEach(w => {
+        word = w[0].toUpperCase();
+        for(let x = 1; x < w.length; x++){
+            word += w[x].toLowerCase();
+        }
+        ans += (`${word} `);
+    });
+    return ans;
+}
+
+const noQuotes = (arg) => {
+    let string = arg.split('"');
+    return string[1];
+}
+
 const setDisplay = (ev) => {
     if(el !== ev.target){
         el = ev.target;
@@ -162,7 +181,8 @@ let Functions = {
     longestNum,
     ending,
     repeat,
-    truncate
+    truncate,
+    titleCase
 }
 
 button.addEventListener('click', submitInput);
