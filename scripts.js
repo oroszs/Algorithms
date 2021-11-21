@@ -144,6 +144,28 @@ const titleCase = (arg) => {
     return ans;
 }
 
+const mutate = (arg) => {
+    let strs = arg.split(', ');
+    let x = strs[0].split('[');
+    let y = strs[1].split(']');
+    let str1 = x[1];
+    let str2 = y[0];
+    let hasLet = 0;
+    ans = true;
+    for(let i = 0; i < str2.length; i++){
+        for(let j = 0; j < str1.length; j++){
+            if(str2[i].toLowerCase() == str1[j].toLowerCase()) {
+                hasLet ++;
+            }
+        }
+        if(hasLet === 0) {
+            ans = false;
+        }
+        hasLet = 0;
+    }
+    return ans;
+}
+
 const noQuotes = (arg) => {
     let string = arg.split('"');
     return string[1];
@@ -182,7 +204,8 @@ let Functions = {
     ending,
     repeat,
     truncate,
-    titleCase
+    titleCase,
+    mutate
 }
 
 button.addEventListener('click', submitInput);

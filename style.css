@@ -8,6 +8,15 @@ body {
     color: rgb(54, 35, 0);
     min-width: 920px;
 }
+#inputBox {
+    border: 2px solid rgb(114, 87, 52);
+    border-radius: 5px;
+    background-color: rgb(255, 255, 255);
+    outline: none;
+    padding: 10px;
+    margin: 10px;
+    width: 300px;
+}
 #outputDiv{
     position: relative;
     margin: auto;
