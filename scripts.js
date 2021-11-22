@@ -166,6 +166,45 @@ const mutate = (arg) => {
     return ans;
 }
 
+const slice = (arg) => {
+    let brackets = arg.split(']');
+    let brackets2 = brackets[0].split('[');
+    let brackets3 = brackets[1].split('[');
+    let arr1 = brackets2[1].split(', ');
+    let arr2 = brackets3[1].split(', ');
+    let arr3 = brackets[2].split(', ');
+    let empty1 = false;
+    let empty2 = false;
+    arr3.splice(0, 1);
+    let index = arr3[0];
+    if(arr1.indexOf('"') !== -1){
+        let ans1 = arr1.map(x => noQuotes(x));
+        arr1 = ans1;
+    }
+    if(arr2.indexOf('"') !== -1){
+        let ans2 = arr2.map(x => noQuotes(x));
+        arr2 = ans2;
+    }
+    if(arr1.length === 1 && arr1[0] === ''){
+        empty1 = true;
+    }
+    if(arr2.length === 1 && arr2[0] === ''){
+        empty2 = true;
+    }
+    if(!empty1 && !empty2){
+        for(let x = arr1.length -1; x > -1; x--){
+            arr2.splice(index, 0, arr1[x]);
+        }
+    } else if(empty2){
+        arr2 = arr1;
+    }
+    for(let i = 1; i < arr2.length; i++){
+        arr2[i].toString();
+        arr2[i] = ' ' + arr2[i];
+    }
+    return arr2;
+}
+
 const noQuotes = (arg) => {
     let string = arg.split('"');
     return string[1];
@@ -205,7 +244,8 @@ let Functions = {
     repeat,
     truncate,
     titleCase,
-    mutate
+    mutate,
+    slice
 }
 
 button.addEventListener('click', submitInput);
